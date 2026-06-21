@@ -7,7 +7,7 @@
 // CONFIG — Gemini API Key
 // ===============================
 
-const GEMINI_KEY = "AQ.Ab8RN6L9yy2N3V6-WhL8VMoipuxo2pLNkjpbrEXI7Zg35XpGUQ";
+const GEMINI_KEY = "";
 
 
 // ===============================
