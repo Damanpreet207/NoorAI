@@ -7,7 +7,7 @@
 // CONFIG — Gemini API Key
 // ===============================
 
-const GEMINI_KEY = "AQ.Ab8RN6L9yy2N3V6-WhL8VMoipuxo2pLNkjpbrEXI7Zg35XpGUQ";
+const GEMINI_KEY = "";
 
 
 // ===============================
@@ -1835,7 +1835,7 @@ ${message}
 
 
         const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_KEY}`,
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_KEY}`,
         {
 
             method: "POST",
@@ -1872,17 +1872,45 @@ ${message}
 
         const data =
         await response.json();
+        console.log("Gemini Chat Response:", data);
 
 
         loading.remove();
 
 
-        const reply =
-        data.candidates?.[0]
-        ?.content?.parts?.[0]
-        ?.text ||
+        let reply =
+data.candidates?.[0]
+?.content?.parts?.[0]
+?.text;
 
-        "Sorry beautiful, I couldn't understand your request.";
+if(!reply) {
+
+    const text = message.toLowerCase();
+
+    if(text.includes("skin")) {
+        reply = "✨ For a bridal glow, focus on cleansing, moisturizing and daily SPF. Hydration is your best friend 👰";
+    }
+
+    else if(text.includes("hair")) {
+        reply = "💇 For healthy bridal hair, use nourishing oils, gentle shampoo and avoid excessive heat styling.";
+    }
+
+    else if(text.includes("makeup")) {
+        reply = "💄 A bridal look should match your outfit, face features and personal style. Soft glam and royal looks are timeless.";
+    }
+
+    else if(text.includes("budget")) {
+        reply = "💰 Allocate your budget wisely: makeup, hair, skincare and accessories should be balanced.";
+    }
+
+    else if(text.includes("jewellery")) {
+        reply = "💎 Kundan, Polki and pearls are classic bridal choices depending on your outfit style.";
+    }
+
+    else {
+        reply = "👰 Hello beautiful! I can help with skincare, haircare, makeup, jewellery, bridal looks and wedding preparation ✨";
+    }
+}
 
 
 
