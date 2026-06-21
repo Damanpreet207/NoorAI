@@ -1834,31 +1834,111 @@ ${message}
     try {
 
 
-       const response = await fetch("/api/chat", {
+        const response = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_KEY}`,
+        {
 
-    method: "POST",
+            method: "POST",
 
-    headers: {
-        "Content-Type": "application/json"
-    },
-
-    body: JSON.stringify({
-        message: message
-    })
-
-});
+            headers: {
+                "Content-Type":
+                "application/json"
+            },
 
 
-        const data = await response.json();
+            body: JSON.stringify({
 
-        console.log("NoorAI API Response:", data);
+                contents: [
+
+                    ...conversationHistory,
+
+                    {
+                        role: "user",
+
+                        parts: [
+                            {
+                                text: prompt
+                            }
+                        ]
+
+                    }
+
+                ]
+
+            })
+
+        });
+
+
+        const data =
+        await response.json();
+        console.log("Gemini Chat Response:", data);
+
 
         loading.remove();
 
-        const reply = data.reply;
+
+        let reply =
+data.candidates?.[0]
+?.content?.parts?.[0]
+?.text;
+
+if(!reply) {
+
+    const text = message.toLowerCase();
+
+    if(text.includes("skin")) {
+        reply = "✨ For a bridal glow, focus on cleansing, moisturizing and daily SPF. Hydration is your best friend 👰";
+    }
+
+    else if(text.includes("hair")) {
+        reply = "💇 For healthy bridal hair, use nourishing oils, gentle shampoo and avoid excessive heat styling.";
+    }
+
+    else if(text.includes("makeup")) {
+        reply = "💄 A bridal look should match your outfit, face features and personal style. Soft glam and royal looks are timeless.";
+    }
+
+    else if(text.includes("budget")) {
+        reply = "💰 Allocate your budget wisely: makeup, hair, skincare and accessories should be balanced.";
+    }
+
+    else if(text.includes("jewellery")) {
+        reply = "💎 Kundan, Polki and pearls are classic bridal choices depending on your outfit style.";
+    }
+
+    else {
+        reply = "👰 Hello beautiful! I can help with skincare, haircare, makeup, jewellery, bridal looks and wedding preparation ✨";
+    }
+}
 
 
 
+        // Save chat history
+        conversationHistory.push(
+            {
+                role: "user",
+
+                parts: [
+                    {
+                        text: prompt
+                    }
+                ]
+            }
+        );
+
+
+        conversationHistory.push(
+            {
+                role: "model",
+
+                parts: [
+                    {
+                        text: reply
+                    }
+                ]
+            }
+        );
 
 
 
