@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoorAI - AI Bridal Beauty Marketplace</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/favicon.png">
+</head>
+<body>
+<button id="topBtn">↑</button>
+    <!-- NoorAI Loader -->
+
+<div class="loader" id="loader">
+
+    <div class="loader-content">
+        <h1>NoorAI ✨</h1>
+        <p>Preparing your bridal glow journey...</p>
+    </div>
+
+</div>
+
+
+<header>
+
+<nav>
+
+<div class="logo">
+    NoorAI ✨
+</div>
+
+
+<ul class="nav-links" id="navLinks">
+
+<li><a href="#home">Home</a></li>
+<li><a href="#planner">AI Planner</a></li>
+<li><a href="#salons">Salons</a></li>
+<li><a href="#assistant">AI Assistant</a></li>
+<li><a href="#dashboard">Dashboard</a></li>
+<li><a href="#savedSection">❤️</a></li>
+
+</ul>
+
+
+<button class="menu" onclick="toggleMenu()">
+☰
+</button>
+<a href="#planner" class="btn">
+    Get Started
+</a>
+
+</nav>
+
+</header>
+
+
+<section class="hero" id="home">
+    <div class="hero-text">
+        <h1>Your Dream Bridal Look,<br> Planned by AI</h1>
+
+        <p>
+            Discover India's finest bridal artists, get a personalized
+            AI beauty timeline, and plan your dream wedding glow journey with NoorAI.
+        </p>
+
+        <a href="#planner" class="hero-btn">
+            Try AI Planner
+        </a>
+    </div>
+
+    <div class="hero-image">
+        <img src="images/bridal-hero.jpg" alt="Luxury Indian Bridal Beauty">
+    </div>
+</section>
+
+
+<section class="features">
+
+<h2>Powered by AI</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>AI Bridal Planner</h3>
+<p>
+Get a personalized beauty schedule based on your wedding date and goals.
+</p>
+</div>
+
+
+<div class="card">
+<h3>Smart Salon Match</h3>
+<p>
+Find the perfect bridal salon according to your budget and preferences.
+</p>
+</div>
+
+
+<div class="card">
+<h3>Beauty Assistant</h3>
+<p>
+Chat with your AI beauty expert anytime, anywhere.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- AI Bridal Planner Section -->
+
+<section class="planner" id="planner">
+
+<h2>Create Your AI Bridal Plan ✨</h2>
+
+<p>
+Tell us about your wedding and NoorAI will design your personalized beauty journey.
+</p>
+
+<div class="planner-container">
+
+<div class="planner-form">
+
+<form id="beautyForm">
+
+<label>Wedding Date</label>
+<input type="date" id="weddingDate" required>
+
+
+<label>Skin Type</label>
+<select id="skin">
+<option>Dry</option>
+<option>Oily</option>
+<option>Combination</option>
+<option>Sensitive</option>
+</select>
+
+
+<label>Hair Goal</label>
+<select id="hair">
+<option>Shiny Hair</option>
+<option>Hair Growth</option>
+<option>Less Frizz</option>
+<option>Hair Repair</option>
+</select>
+
+
+<label>Bridal Style</label>
+<select id="style">
+<option>Traditional</option>
+<option>Royal</option>
+<option>Modern Minimal</option>
+<option>Bollywood Glam</option>
+</select>
+
+
+<label>Budget (₹)</label>
+<input type="number" id="budget" placeholder="Enter budget" required>
+
+
+<button type="submit" class="ai-btn">
+    Create AI Plan ✨
+</button>
+
+</form>
+
+</div>
+
+
+
+<div class="planner-result">
+
+<h3>Your AI Beauty Timeline</h3>
+
+<div id="result">
+
+<div class="empty-plan">
+
+✨ Complete your bridal details above and let NoorAI create your personalized beauty journey.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- AI Face Analysis Section -->
+
+<section class="face-analysis" id="face">
+    <h2>AI Bridal Style Match ✨</h2>
+    <p>Powered by Gemini AI Vision</p>
+
+    <div class="face-container">
+        <div class="upload-box">
+            <div style="font-size: 32px; margin-bottom: 5px;">📸</div>
+            <p style="font-weight: bold; font-size: 15px; color: #5c4308;">Drop or Select Your Selfie</p>
+            
+            <input type="file" id="faceUpload" accept="image/*">
+            <img id="preview" src="" alt="Your Selfie" style="display:none;">
+            
+            <button onclick="analyzeFace()">
+                Analyze My Face ✨
+            </button>
+        </div>
+
+        <div class="analysis-result">
+            <h3>AI Beauty Recommendation</h3>
+            <div id="faceResult">
+                Your personalized makeup, hairstyle, and jewelry suggestions will appear here.
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Salon Marketplace -->
+
+<section class="marketplace" id="salons">
+
+<h2>Explore India's Top Bridal Artists</h2>
+
+<div class="filter-box">
+
+<input 
+type="text" 
+id="searchInput"
+placeholder="Search salons...">
+
+<select id="priceFilter">
+<option value="all">All Budgets</option>
+<option value="15000">Under ₹15,000</option>
+<option value="25000">Under ₹25,000</option>
+<option value="50000">Luxury ₹50,000+</option>
+</select>
+
+</div>
+
+
+<div class="salon-container" id="salonContainer">
+
+
+<div class="salon-card" data-price="25000">
+
+<img src="https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=600&q=80" alt="Bridal Serum Skincare">
+
+<h3>Royal Glow Studio</h3>
+<p>⭐ 4.9 | South Delhi</p>
+
+<p>Bridal Package ₹25,000</p>
+
+<div class="salon-card-buttons">
+    <button class="heart">♡</button>
+    <button class="book-btn">Book Now</button>
+</div>
+
+</div>
+
+
+
+<div class="salon-card" data-price="12000">
+
+<img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=80">
+
+<h3>Noor Beauty Lounge</h3>
+
+<p>⭐ 4.7 | West Delhi</p>
+
+<p>Bridal Package ₹12,000</p>
+
+<div class="salon-card-buttons">
+    <button class="heart">♡</button>
+    <button class="book-btn">Book Now</button>
+</div>
+
+</div>
+
+
+<div class="salon-card" data-price="50000">
+
+<img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800">
+
+<h3>Luxury Bride Palace</h3>
+
+<p>⭐ 5.0 | Central Delhi</p>
+
+<p>Premium Package ₹50,000</p>
+
+<div class="salon-card-buttons">
+    <button class="heart">♡</button>
+    <button class="book-btn">Book Now</button>
+</div>
+
+</div>
+
+<div class="salon-card" data-price="18000">
+
+    <img src="images1/bliss-hero.jpg" 
+         alt="Bliss Bridal Studio">
+
+    <h3>Bliss Bridal Studio</h3>
+
+    <p>⭐ 4.8 | North Delhi</p>
+
+    <p>Luxury Bridal Package ₹18,000</p>
+
+    <div class="salon-card-buttons">
+        <button class="heart">♡</button>
+        <button class="book-btn">
+            Book Now ✨
+        </button>
+    </div>
+
+</div>
+
+<div class="salon-card" data-price="35000">
+  <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=600&q=80">
+  <h3>Sheen Makeup Studio</h3>
+  <p>⭐ 4.6 | East Delhi</p>
+  <p>Bridal Package ₹35,000</p>
+  <div class="salon-card-buttons">
+    <button class="heart">♡</button>
+    <button class="book-btn">Book Now</button>
+</div>
+</div>
+
+<div class="salon-card" data-price="9500">
+  <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&q=80">
+  <h3>Pink Petal Beauty</h3>
+  <p>⭐ 4.5 | Dwarka, Delhi</p>
+  <p>Bridal Package ₹9,500</p>
+  <div class="salon-card-buttons">
+    <button class="heart">♡</button>
+    <button class="book-btn">Book Now</button>
+</div>
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- Booking Popup -->
+
+<div class="popup" id="bookingPopup">
+
+<div class="popup-content">
+
+    <h2>Book Appointment</h2>
+    <p id="popupSalonName" style="color: #d4af37; font-weight: bold; margin-bottom: 10px; font-size: 16px;"></p>
+
+    <input type="text" id="bookingName" placeholder="Your Name">
+
+    <input type="date" id="bookingDate">
+
+    <div class="popup-buttons">
+        <button class="cancel-btn" onclick="cancelBooking()">
+            Cancel
+        </button>
+
+        <button onclick="closePopup()">
+            Confirm Booking
+        </button>
+    </div>
+
+</div>
+
+</div>
+
+<!-- AI Beauty Assistant -->
+
+<section class="chatbot" id="assistant">
+
+<!-- Floating AI Beauty Assistant Widget -->
+<div class="floating-chat-widget" id="chatWidget">
+    <!-- Chat Toggle Button -->
+    <button class="chat-toggle-btn" onclick="toggleChatWindow()">💬 Chat with NoorAI</button>
+
+    <!-- Hidden Chat Container Box -->
+    <div class="chat-container" id="chatContainer" style="display: none;">
+        <div class="chat-header">
+            <span>Meet NoorAI Assistant 🤖</span>
+            <button class="close-chat" onclick="toggleChatWindow()">×</button>
+        </div>
+
+        <div class="chat-box" id="chatBox">
+            <div class="message bot">
+                ✨ Hello Beautiful! I’m NoorAI. Ask me anything about your bridal glow journey.
+            </div>
+        </div>
+
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Ask NoorAI something...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- AI Recommendation + Dashboard -->
+
+<section class="dashboard" id="dashboard">
+
+<h2>Your NoorAI Bridal Journey 👰✨</h2>
+
+<p>
+Your personalized beauty journey managed by AI.
+</p>
+
+
+<div class="dashboard-container">
+
+
+<!-- AI Recommendation -->
+
+<div class="dashboard-card">
+
+<h3>🧠 AI Recommended Salon</h3>
+
+<p>
+Based on your bridal style and budget, NoorAI suggests:
+</p>
+
+<div class="recommend" id="aiRecommend">
+  <p style="color: #888; font-style: italic;">✨ Complete the AI Planner above to get your personalized salon recommendation.</p>
+</div>
+
+</div>
+
+
+
+<!-- Bridal Timeline -->
+
+<div class="dashboard-card">
+
+<h3>📅 Bridal Beauty Progress</h3>
+
+
+<div class="progress">
+
+<h4>Your Bridal Glow Progress</h4>
+
+<div class="progress-bar">
+    <div id="progressFill"></div>
+</div>
+
+<p id="progressText">
+Complete your AI planner to start your journey ✨
+</p>
+
+
+<div id="taskContainer">
+
+<div class="task pending">
+⏳ Your personalized bridal journey will appear here.
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+<!-- AI Budget Optimizer -->
+
+<div class="dashboard-card">
+
+<h3>💰 AI Budget Optimizer</h3>
+
+<p>
+Your smart beauty budget allocation powered by NoorAI.
+</p>
+
+<div id="budgetPlanner">
+
+<p style="color:#888;font-style:italic;">
+Complete AI Planner to see your personalized budget strategy ✨
+</p>
+
+</div>
+
+</div>
+<!-- AI Bridal Mood Board -->
+
+<div class="dashboard-card">
+
+<h3>🎨 AI Bridal Mood Board</h3>
+
+<p>
+Your personalized bridal inspiration designed by NoorAI.
+</p>
+
+<div id="moodBoard">
+
+<p style="color:#888; font-style:italic;">
+Complete AI Planner to unlock your bridal mood board ✨
+</p>
+
+</div>
+
+</div>
+<!-- Wedding Countdown -->
+
+<div class="countdown-box">
+    <h2>⏳ Your Wedding Countdown</h2>
+    <h1 id="countdownDisplay">Select a date above!</h1>
+</div>
+
+
+</div>
+
+
+</section>
+
+<section class="why">
+
+<h2>Why NoorAI?</h2>
+
+<div class="why-container">
+
+<div class="box">
+<h3>100+ Verified Artists</h3>
+</div>
+
+<div class="box">
+<h3>Budget Friendly Packages</h3>
+</div>
+
+<div class="box">
+<h3>Luxury Bridal Experience</h3>
+</div>
+
+</div>
+
+</section>
+
+
+
+<section class="testimonial">
+
+<h2>What Brides Say</h2>
+
+<p>
+"Finding my perfect bridal artist became so easy with NoorAI!"
+</p>
+
+<p>- Gurleen Sahi </p>
+
+</section>
+
+
+
+<section class="saved-section" id="savedSection">
+
+<h2>❤️ Your Saved Salons</h2>
+
+<div id="savedContainer">
+
+<div class="empty-saved">
+
+<div class="empty-illustration">
+🤍
+</div>
+
+<h3>Your NoorAI Wishlist is Empty</h3>
+
+<p>
+Save your favorite bridal artists and create your dream beauty journey.
+</p>
+
+</div>
+
+</div>
+
+</section>
+<footer class="footer">
+
+<div class="footer-container">
+
+<div class="footer-section">
+<h2>NoorAI ✨</h2>
+<p>
+AI-powered bridal beauty planning for the modern Indian bride.
+</p>
+</div>
+
+
+<div class="footer-section">
+<h3>Explore</h3>
+
+<a href="#home">Home</a>
+<a href="#planner">AI Planner</a>
+<a href="#salons">Salons</a>
+<a href="#assistant">AI Assistant</a>
+
+</div>
+
+
+<div class="footer-section">
+
+<h3>Contact</h3>
+
+<p>📍 Delhi, India</p>
+<p>📧 hello@noorai.com</p>
+<p>📞 +91 98765 43210</p>
+
+</div>
+
+
+</div>
+
+
+<hr>
+
+
+<p class="copyright">
+© 2026 NoorAI. Designed with ❤️ for every bride.
+</p>
+
+
+</footer>
+
+
+<script src="script.js"></script>
+
+
+</body>
+</html>
