@@ -1228,3 +1228,11 @@ nav {
     background: #d4af37;
     color: white;
 }
+
+.booking-label {
+    display: block;
+    text-align: left;
+    margin: 10px 0 6px;
+    font-weight: 600;
+    color: #5c4308;
+}
