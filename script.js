@@ -60,7 +60,7 @@ function toggleMenu() {
 // ===============================
 
 const revealItems = document.querySelectorAll(
-    ".card, .box, .salon-card, .dashboard-card, .planner-form, .planner-result, .chat-container, .saved, .countdown-box"
+".card, .box, .salon-card, .dashboard-card, .planner-form, .planner-result, .chat-container, .saved, .countdown-box"
 );
 
 
@@ -100,8 +100,8 @@ revealItems.forEach(item => {
 
 
 window.addEventListener(
-    "scroll",
-    revealElements
+"scroll",
+revealElements
 );
 
 
@@ -125,11 +125,11 @@ document.getElementById("result");
 // ===============================
 
 function createLuxuryTimeline(
-    daysLeft,
-    skin,
-    hair,
-    style,
-    budget
+daysLeft,
+skin,
+hair,
+style,
+budget
 ) {
 
 let timeline = [];
@@ -166,6 +166,7 @@ text:
 
 ];
 
+
 }
 
 
@@ -200,6 +201,7 @@ text:
 
 ];
 
+
 }
 
 
@@ -233,6 +235,7 @@ text:
 }
 
 ];
+
 
 }
 
@@ -271,6 +274,7 @@ ${step.text}
 return html;
 
 }
+
 // ===============================
 // Scroll Reveal Animation
 // ===============================
@@ -285,11 +289,10 @@ function revealElements() {
 
         const position = item.getBoundingClientRect().top;
 
-        if (position < window.innerHeight - 100) {
+        if(position < window.innerHeight - 100) {
 
             item.style.opacity = "1";
             item.style.transform = "translateY(0)";
-
         }
 
     });
@@ -307,7 +310,6 @@ revealItems.forEach(item => {
 
 
 window.addEventListener("scroll", revealElements);
-
 revealElements();
 
 
@@ -331,27 +333,24 @@ function createLuxuryTimeline(daysLeft, skin, hair, style, budget) {
     let timeline = [];
 
 
-    if (daysLeft > 90) {
+    if(daysLeft > 90) {
 
         timeline = [
 
             {
                 title: "🌱 Beginning Your Bridal Glow",
-
                 text:
                 `Start a gentle ${skin.toLowerCase()} skincare routine, hydrate daily and focus on hair nourishment.`
             },
 
             {
                 title: "💄 Discover Your Signature Style",
-
                 text:
                 `Explore ${style} bridal looks, save inspirations and understand your dream aesthetic.`
             },
 
             {
                 title: "💇 Strengthen Your Hair Journey",
-
                 text:
                 `Regular oiling, masks and healthy nutrition will prepare your hair beautifully.`
             }
@@ -361,28 +360,25 @@ function createLuxuryTimeline(daysLeft, skin, hair, style, budget) {
     }
 
 
-    else if (daysLeft > 30) {
+    else if(daysLeft > 30) {
 
 
         timeline = [
 
             {
                 title: "✨ Bridal Preparation Phase",
-
                 text:
                 `Maintain your ${skin.toLowerCase()} skincare routine and never skip sunscreen.`
             },
 
             {
                 title: "💍 Finalize Your Bridal Look",
-
                 text:
                 `Book your ${style} makeup trial and confirm your hairstyle choices.`
             },
 
             {
                 title: "💰 Budget Smartly",
-
                 text:
                 `Allocate your ₹${budget} budget towards professional makeup, hair and skincare services.`
             }
@@ -399,7 +395,6 @@ function createLuxuryTimeline(daysLeft, skin, hair, style, budget) {
 
             {
                 title: "👑 Final Glow Phase",
-
                 text:
                 `Avoid trying new products and protect your skin barrier before the wedding.`
             },
@@ -407,7 +402,6 @@ function createLuxuryTimeline(daysLeft, skin, hair, style, budget) {
 
             {
                 title: "💄 Lock Your Complete Look",
-
                 text:
                 `Keep your makeup, hairstyle and jewellery completely finalized.`
             },
@@ -415,7 +409,6 @@ function createLuxuryTimeline(daysLeft, skin, hair, style, budget) {
 
             {
                 title: "🌸 Rest & Celebrate",
-
                 text:
                 `Sleep well, stay hydrated and enjoy your special bridal moments.`
             }
@@ -449,10 +442,12 @@ function createLuxuryTimeline(daysLeft, skin, hair, style, budget) {
 
         `;
 
+
     });
 
 
     return html;
+
 
 }
 
@@ -461,6 +456,7 @@ function createLuxuryTimeline(daysLeft, skin, hair, style, budget) {
 // AI Budget Optimizer
 // ===============================
 
+
 function generateBudgetPlan(budget) {
 
 
@@ -468,7 +464,7 @@ function generateBudgetPlan(budget) {
     document.getElementById("budgetPlanner");
 
 
-    if (!container) return;
+    if(!container) return;
 
 
     const total = Number(budget);
@@ -481,15 +477,18 @@ function generateBudgetPlan(budget) {
             percent: 50
         },
 
+
         {
             name: "💇 Hair Styling",
             percent: 20
         },
 
+
         {
             name: "🧴 Skincare",
             percent: 20
         },
+
 
         {
             name: "💎 Accessories",
@@ -536,12 +535,21 @@ function generateBudgetPlan(budget) {
 
         `;
 
+
     });
 
 
     container.innerHTML = html;
 
+
 }
+
+
+// ===============================
+// Part 2/8 End
+// Next: Part 3/8
+// ===============================
+
 // ===============================
 // AI Bridal Planner Main Engine
 // ===============================
@@ -653,8 +661,7 @@ Rules:
 
 
             const response = await fetch(
-
-                `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_KEY}`,
+                    `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_KEY}`,
 
                 {
 
@@ -710,7 +717,7 @@ Rules:
                 ?.content?.parts?.[0]?.text;
 
 
-            if (!aiText) {
+            if(!aiText) {
 
                 throw new Error(
                     "No AI response received"
@@ -724,8 +731,8 @@ Rules:
                 aiText
                 .replace(/\*\*(.*?)\*\*/g,
                 "<strong>$1</strong>")
-                .replace(/\n\n/g, "<br><br>")
-                .replace(/\n/g, "<br>");
+                .replace(/\n\n/g,"<br><br>")
+                .replace(/\n/g,"<br>");
 
 
 
@@ -745,7 +752,7 @@ Rules:
             setInterval(() => {
 
 
-                if (index < words.length) {
+                if(index < words.length) {
 
 
                     result.innerHTML +=
@@ -785,7 +792,7 @@ Rules:
         }
 
 
-        catch (error) {
+        catch(error) {
 
 
             console.error(error);
@@ -793,7 +800,7 @@ Rules:
 
             // Premium fallback plan
 
-            result.innerHTML =
+            result.innerHTML = 
             createLuxuryTimeline(
                 daysLeft,
                 skin,
@@ -824,6 +831,11 @@ Rules:
 
 
 // ===============================
+// Part 3/8 End
+// Next: Part 4/8
+// ===============================
+
+// ===============================
 // AI Bridal Mood Board
 // ===============================
 
@@ -833,7 +845,7 @@ function generateMoodBoard(style) {
     document.getElementById("moodBoard");
 
 
-    if (!moodBoard) return;
+    if(!moodBoard) return;
 
 
     const styles = {
@@ -872,7 +884,8 @@ function generateMoodBoard(style) {
 
         },
 
-                "Modern Minimal": {
+
+        "Modern Minimal": {
 
             makeup:
             "Soft nude makeup with fresh natural glow",
@@ -905,13 +918,14 @@ function generateMoodBoard(style) {
 
         }
 
+
     };
 
 
     const data = styles[style];
 
 
-    if (!data) {
+    if(!data) {
 
         moodBoard.innerHTML = "";
         return;
@@ -921,78 +935,81 @@ function generateMoodBoard(style) {
 
     moodBoard.innerHTML = `
 
-    <div class="mood-grid">
+        <div class="mood-grid">
 
-        <div class="mood-card">
 
-            <div class="icon">
-                💄
+            <div class="mood-card">
+
+                <div class="icon">
+                    💄
+                </div>
+
+                <h4>
+                    Makeup
+                </h4>
+
+                <p>
+                    ${data.makeup}
+                </p>
+
             </div>
 
-            <h4>
-                Makeup
-            </h4>
 
-            <p>
-                ${data.makeup}
-            </p>
+            <div class="mood-card">
 
-        </div>
+                <div class="icon">
+                    💇
+                </div>
 
+                <h4>
+                    Hair
+                </h4>
 
-        <div class="mood-card">
+                <p>
+                    ${data.hair}
+                </p>
 
-            <div class="icon">
-                💇
             </div>
 
-            <h4>
-                Hair
-            </h4>
 
-            <p>
-                ${data.hair}
-            </p>
+            <div class="mood-card">
 
-        </div>
+                <div class="icon">
+                    💎
+                </div>
 
+                <h4>
+                    Jewelry
+                </h4>
 
-        <div class="mood-card">
+                <p>
+                    ${data.jewelry}
+                </p>
 
-            <div class="icon">
-                💎
             </div>
 
-            <h4>
-                Jewelry
-            </h4>
 
-            <p>
-                ${data.jewelry}
-            </p>
+            <div class="mood-card">
 
-        </div>
+                <div class="icon">
+                    🎨
+                </div>
 
+                <h4>
+                    Color Palette
+                </h4>
 
-        <div class="mood-card">
+                <p>
+                    ${data.colors}
+                </p>
 
-            <div class="icon">
-                🎨
             </div>
 
-            <h4>
-                Color Palette
-            </h4>
-
-            <p>
-                ${data.colors}
-            </p>
 
         </div>
-
-    </div>
 
     `;
+
 
 }
 
@@ -1068,7 +1085,8 @@ function filterSalons() {
 }
 
 
-if (searchInput) {
+
+if(searchInput) {
 
     searchInput.addEventListener(
         "keyup",
@@ -1078,7 +1096,7 @@ if (searchInput) {
 }
 
 
-if (priceFilter) {
+if(priceFilter) {
 
     priceFilter.addEventListener(
         "change",
@@ -1089,18 +1107,21 @@ if (priceFilter) {
 
 
 // ===============================
+// Part 4/8 End
+// Next: Part 5/8
+// ===============================
+
+// ===============================
 // AI Salon Recommendation Engine
 // ===============================
 
-
 function updateRecommendation(style, budget) {
-
 
     const aiRecommend =
     document.getElementById("aiRecommend");
 
 
-    if (!aiRecommend) return;
+    if(!aiRecommend) return;
 
 
     const budgetNum =
@@ -1151,7 +1172,8 @@ function updateRecommendation(style, budget) {
             "Premium celebrity-inspired makeup"
         },
 
-                {
+
+        {
             name: "Bliss Bridal Studio",
             rating: "4.8 ⭐",
             location: "North Delhi",
@@ -1181,6 +1203,7 @@ function updateRecommendation(style, budget) {
     ];
 
 
+
     let match =
     salons.find(s =>
         s.styles.includes(style) &&
@@ -1188,77 +1211,92 @@ function updateRecommendation(style, budget) {
     );
 
 
-    if (!match) {
 
-        match = salons
+    if(!match) {
+
+        match =
+        salons
         .filter(s => s.price <= budgetNum)
-        .sort((a, b) => b.price - a.price)[0];
+        .sort((a,b) => b.price - a.price)[0];
 
     }
 
 
-    if (!match) {
 
-        match = salons
-        .sort((a, b) => a.price - b.price)[0];
+    if(!match) {
+
+        match =
+        salons.sort(
+            (a,b) => a.price - b.price
+        )[0];
 
     }
+
 
 
     let score = 70;
 
 
-    if (match.styles.includes(style)) {
+    if(match.styles.includes(style)) {
 
         score += 20;
 
     }
 
 
-    if (match.price <= budgetNum) {
+    if(match.price <= budgetNum) {
 
         score += 10;
 
     }
 
 
+
     let badge = "";
 
 
-    if (score >= 95) {
+    if(score >= 95) {
 
-        badge = "★★★★★ Premium Match";
+        badge =
+        "★★★★★ Premium Match";
 
     }
 
-    else if (score >= 85) {
+    else if(score >= 85) {
 
-        badge = "★★★★ Excellent Match";
+        badge =
+        "★★★★ Excellent Match";
 
     }
 
     else {
 
-        badge = "★★★ Good Match";
+        badge =
+        "★★★ Good Match";
 
     }
+
 
 
     aiRecommend.innerHTML = `
 
     <div class="ai-match-card">
 
+
         <h2>
         🧠 NoorAI Match Score
         </h2>
+
 
         <h1>
         ${score}%
         </h1>
 
+
         <h3>
         ${match.name}
         </h3>
+
 
         <p>
         ⭐ ${match.rating}<br>
@@ -1268,11 +1306,14 @@ function updateRecommendation(style, budget) {
         ₹${match.price.toLocaleString("en-IN")}
         </p>
 
+
         <hr>
+
 
         <h4>
         Why NoorAI selected this salon?
         </h4>
+
 
         <p>
         ✔ Matches your
@@ -1288,9 +1329,11 @@ function updateRecommendation(style, budget) {
         ✔ Best balance of luxury and value
         </p>
 
+
         <div class="confidence">
         ${badge}
         </div>
+
 
         <button 
         class="book-btn"
@@ -1298,10 +1341,16 @@ function updateRecommendation(style, budget) {
         Book AI Recommended Salon ✨
         </button>
 
+
     </div>
 
     `;
+
+
 }
+
+
+
 // ===============================
 // Wishlist / Save Favourite Salons
 // ===============================
@@ -1352,6 +1401,11 @@ document
 
         };
 
+
+// ===============================
+// Part 5/8 End
+// Next: Part 6/8
+// ===============================
 
         // Check if salon is already saved
         const exists = savedSalons.some(
@@ -1489,6 +1543,9 @@ function updateSavedSalons() {
 
 
 }
+
+
+
 // ===============================
 // Booking Popup Controller
 // ===============================
@@ -1636,36 +1693,27 @@ document.addEventListener("click", function(e) {
         const salonCard = e.target.closest(".salon-card");
 
         if(salonCard) {
-
             salonName =
             salonCard.querySelector("h3")?.innerText;
-
         }
 
 
         // For Saved Wishlist cards
-        const savedCard =
-        e.target.closest(".saved-salon-card");
-
+        const savedCard = e.target.closest(".saved-salon-card");
 
         if(savedCard) {
-
             salonName =
             savedCard.querySelector("h3")?.innerText;
-
         }
 
 
         // For AI Recommended salon
-        const aiCard =
-        e.target.closest(".ai-match-card");
-
+        const aiCard = e.target.closest(".ai-match-card");
 
         if(aiCard) {
 
             const headings =
             aiCard.querySelectorAll("h3");
-
 
             if(headings.length > 0) {
 
@@ -1682,6 +1730,11 @@ document.addEventListener("click", function(e) {
     }
 
 });
+
+// ===============================
+// Part 6/8 End
+// Next: Part 7/8
+// ===============================
 
 // ===============================
 // NoorAI Luxury AI Chatbot
@@ -1781,84 +1834,31 @@ ${message}
     try {
 
 
-        const response =
-        await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_KEY}`,
-        {
+       const response = await fetch("/api/chat", {
 
-            method: "POST",
+    method: "POST",
 
-            headers: {
-                "Content-Type":
-                "application/json"
-            },
+    headers: {
+        "Content-Type": "application/json"
+    },
 
+    body: JSON.stringify({
+        message: message
+    })
 
-            body: JSON.stringify({
-
-                contents: [
-
-                    ...conversationHistory,
-
-                    {
-                        role: "user",
-
-                        parts: [
-                            {
-                                text: prompt
-                            }
-                        ]
-
-                    }
-
-                ]
-
-            })
-
-        });
+});
 
 
-        const data =
-        await response.json();
+        const data = await response.json();
 
+        console.log("NoorAI API Response:", data);
 
         loading.remove();
 
-
-        const reply =
-        data.candidates?.[0]
-        ?.content?.parts?.[0]
-        ?.text ||
-
-        "Sorry beautiful, I couldn't understand your request.";
+        const reply = data.reply;
 
 
 
-        // Save chat history
-        conversationHistory.push(
-            {
-                role: "user",
-
-                parts: [
-                    {
-                        text: prompt
-                    }
-                ]
-            }
-        );
-
-
-        conversationHistory.push(
-            {
-                role: "model",
-
-                parts: [
-                    {
-                        text: reply
-                    }
-                ]
-            }
-        );
 
 
 
@@ -2054,6 +2054,460 @@ function weddingCountdown() {
 }
 
 
+
 // ===============================
-// NoorAI Final Script End
+// Part 7/8 End
+// Next: Part 8/8
+// ===============================
+
+// ===============================
+// AI Bridal Progress Dashboard
+// ===============================
+
+function updateBridalProgress(daysLeft) {
+
+
+    weddingCountdown();
+
+
+    const fill =
+    document.getElementById("progressFill");
+
+
+    const text =
+    document.getElementById("progressText");
+
+
+    const tasks =
+    document.getElementById("taskContainer");
+
+
+    if(!fill || !text || !tasks) return;
+
+
+
+    let percentage;
+    let status;
+    let list;
+
+
+
+    if(daysLeft > 90) {
+
+
+        percentage = 20;
+
+
+        status =
+        "🌱 Your bridal journey has just begun.";
+
+
+        list = [
+
+            "✔ Start skincare routine",
+
+            "⏳ Research bridal inspirations",
+
+            "⏳ Book salon consultation",
+
+            "⏳ Plan your makeup trial"
+
+        ];
+
+
+    }
+
+
+    else if(daysLeft > 30) {
+
+
+        percentage = 60;
+
+
+        status =
+        "✨ Your bridal glow journey is progressing beautifully.";
+
+
+        list = [
+
+            "✔ Continue skin care routine",
+
+            "✔ Maintain healthy hair routine",
+
+            "⏳ Finalize bridal makeup artist",
+
+            "⏳ Confirm your salon booking"
+
+        ];
+
+
+    }
+
+
+    else {
+
+
+        percentage = 90;
+
+
+        status =
+        "👰 The big day is almost here! Stay calm and glow.";
+
+
+        list = [
+
+            "✔ Final facial and hair preparation",
+
+            "✔ Bridal look completely finalized",
+
+            "✔ Salon appointment confirmed",
+
+            "🔥 Relax and enjoy your wedding celebration"
+
+        ];
+
+
+    }
+
+
+
+    fill.style.width =
+    percentage + "%";
+
+
+    text.innerHTML =
+    `${percentage}% Complete<br>${status}`;
+
+
+
+    tasks.innerHTML = "";
+
+
+
+    list.forEach(item => {
+
+
+        tasks.innerHTML += `
+
+        <div class="task done">
+
+            ${item}
+
+        </div>
+
+        `;
+
+
+    });
+
+
+}
+
+
+
+// Start countdown when website loads
+weddingCountdown();
+
+
+
+
+// ===============================
+// Back To Top Button
+// ===============================
+
+
+const topBtn =
+document.getElementById("topBtn");
+
+
+if(topBtn) {
+
+
+    window.addEventListener(
+        "scroll",
+        function() {
+
+
+            topBtn.style.display =
+            window.scrollY > 300
+            ? "block"
+            : "none";
+
+
+        }
+    );
+
+
+    topBtn.addEventListener(
+        "click",
+        function() {
+
+
+            window.scrollTo({
+
+                top: 0,
+
+                behavior: "smooth"
+
+            });
+
+
+        }
+    );
+
+
+}
+
+
+
+// ===============================
+// Face Upload Preview
+// ===============================
+
+
+const faceUpload =
+document.getElementById("faceUpload");
+
+
+const preview =
+document.getElementById("preview");
+
+
+if(faceUpload && preview) {
+
+
+    faceUpload.addEventListener(
+        "change",
+        function() {
+
+
+            const file =
+            this.files[0];
+
+
+            if(file) {
+
+
+                preview.src =
+                URL.createObjectURL(file);
+
+
+                preview.style.display =
+                "block";
+
+
+            }
+
+
+        }
+    );
+
+
+}
+
+
+
+// ===============================
+// Floating Chat Window Controller
+// ===============================
+
+
+function toggleChatWindow() {
+
+
+    const chatContainer =
+    document.getElementById("chatContainer");
+
+
+    if(!chatContainer) return;
+
+
+
+    const visible =
+    window.getComputedStyle(chatContainer)
+    .display !== "none";
+
+
+
+    chatContainer.style.display =
+    visible
+    ? "none"
+    : "flex";
+
+
+
+    const chatBox =
+    document.getElementById("chatBox");
+
+
+    if(chatBox) {
+
+
+        setTimeout(() => {
+
+
+            chatBox.scrollTop =
+            chatBox.scrollHeight;
+
+
+        }, 50);
+
+
+    }
+
+
+}
+
+
+
+// ===============================
+// Premium Toast Notification
+// ===============================
+
+
+function showToast(message, type="success") {
+
+
+    const oldToast =
+    document.getElementById("noorToast");
+
+
+    if(oldToast) {
+
+
+        oldToast.remove();
+
+
+    }
+
+
+
+    const toast =
+    document.createElement("div");
+
+
+    toast.id = "noorToast";
+
+
+    toast.innerHTML =
+    message;
+
+
+
+    toast.style.cssText = `
+
+        position:fixed;
+        bottom:90px;
+        left:50%;
+        transform:translateX(-50%);
+        background:${
+            type === "warning"
+            ? "#fff0cc"
+            : "#3b2f2f"
+        };
+        color:${
+            type === "warning"
+            ? "#5c4308"
+            : "white"
+        };
+        padding:14px 28px;
+        border-radius:30px;
+        font-weight:bold;
+        box-shadow:0 8px 25px rgba(0,0,0,.2);
+        z-index:9999;
+        opacity:0;
+        transition:.4s;
+
+    `;
+
+
+    document.body.appendChild(
+        toast
+    );
+
+
+    setTimeout(
+        () => {
+
+            toast.style.opacity = 1;
+
+        },
+        50
+    );
+
+
+    setTimeout(
+        () => {
+
+            toast.style.opacity = 0;
+
+
+            setTimeout(
+                () => toast.remove(),
+                400
+            );
+
+
+        },
+        3000
+    );
+
+
+}
+
+// ===============================
+// AI Face Analysis
+// ===============================
+
+function analyzeFace() {
+
+    const faceResult = document.getElementById("faceResult");
+
+    const faceUpload = document.getElementById("faceUpload");
+
+    const file = faceUpload.files[0];
+
+
+    if (!file) {
+
+        faceResult.innerHTML =
+        "⚠️ Please upload your selfie first.";
+
+        return;
+
+    }
+
+
+    faceResult.innerHTML =
+    "✨ NoorAI is analyzing your facial features...";
+
+
+    setTimeout(() => {
+
+
+        faceResult.innerHTML = `
+
+        <h3>👰 Your AI Bridal Match</h3>
+
+        💄 <b>Makeup:</b><br>
+        Soft radiant base, warm eyeshadow and glossy lips.<br><br>
+
+        💇 <b>Hairstyle:</b><br>
+        Elegant bun with soft curls and fresh flowers.<br><br>
+
+        💎 <b>Jewellery:</b><br>
+        Kundan, pearls or delicate gold pieces will suit your look.<br><br>
+
+        ✨ <b>NoorAI Tip:</b><br>
+        Choose makeup that enhances your natural beauty.
+
+        `;
+
+
+    }, 2000);
+
+}
+
+// ===============================
+// NoorAI Final Script Complete
 // ===============================
