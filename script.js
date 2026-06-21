@@ -7,7 +7,7 @@
 // CONFIG — Gemini API Key
 // ===============================
 
-const GEMINI_KEY = "";
+const GEMINI_KEY = "AQ.Ab8RN6L9yy2N3V6-WhL8VMoipuxo2pLNkjpbrEXI7Zg35XpGUQ";
 
 
 // ===============================
@@ -1831,67 +1831,67 @@ ${message}
 `;
 
 
-    try {
+    let reply = "";
+
+const msg = message.toLowerCase();
 
 
-       const response = await fetch("/api/chat", {
+if (msg.includes("skin") || msg.includes("glow")) {
 
-    method: "POST",
+    reply = "💧 For a bridal glow, stay hydrated, use sunscreen daily and follow a gentle skincare routine. ✨";
 
-    headers: {
-        "Content-Type": "application/json"
-    },
+}
 
-    body: JSON.stringify({
-        message: message
-    })
+else if (msg.includes("hair")) {
 
-});
+    reply = "💇 Use regular oiling, hair masks and avoid excessive heat for healthy bridal hair.";
 
+}
 
-        const data = await response.json();
+else if (msg.includes("makeup") || msg.includes("look")) {
 
-        console.log("NoorAI API Response:", data);
+    reply = "💄 Choose a makeup style that matches your outfit, features and bridal theme.";
 
-        loading.remove();
+}
 
-        const reply = data.reply;
+else if (msg.includes("jewellery") || msg.includes("jewelry")) {
 
+    reply = "💎 Kundan suits traditional brides while diamonds create a modern elegant look.";
 
+}
 
+else if (msg.includes("budget")) {
 
+    reply = "💰 A smart bridal budget can be divided into makeup, hair, skincare and accessories.";
 
+}
 
-        chatBox.innerHTML += `
+else if (msg.includes("hi") || msg.includes("hello") || msg.includes("hey")) {
 
-        <div class="message bot">
+    reply = "👋 Hello Beautiful! I’m NoorAI. Ask me anything about your bridal glow journey. ✨";
 
-        ${reply.replace(/\n/g,"<br>")}
+}
 
-        </div>
+else {
 
-        `;
+    reply = "✨ I can help you with bridal skincare, makeup, hairstyles, jewellery and beauty planning.";
 
-
-        chatBox.scrollTop =
-        chatBox.scrollHeight;
-
-
-    }
+}
 
 
-    catch(error) {
+loading.remove();
 
 
-        console.log(error);
+chatBox.innerHTML += `
+
+<div class="message bot">
+    ${reply}
+</div>
+
+`;
 
 
-        loading.innerHTML =
-
-        "❌ NoorAI is unavailable right now. Please try again later.";
-
-
-    }
+chatBox.scrollTop = chatBox.scrollHeight;
 
 
 }
